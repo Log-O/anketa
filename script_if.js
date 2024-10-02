@@ -20,7 +20,7 @@ do {
 } while (isNaN(age));
 
 
-const gender=confirm("Введите пол");
+const gender=confirm("Нажмите OK если ваш пол мужской или отмену если женский");
 
 const pensStr= ((gender && age>=65)||(!gender && age>=60))?"да":"нет";
 
