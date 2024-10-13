@@ -1,7 +1,4 @@
-const arr=[ 5, 7,
-    [ 4, [2], 8, [1,3], 2 ],
-    [ 9, [] ],
-    1, 8 ]
+const arr
 
 function treeSum(arr) {
 let sum=0;
