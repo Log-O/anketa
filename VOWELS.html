@@ -8,10 +8,10 @@
 <body>
 <script>
 function words(str) {
-const bukvi=["а", "у" , "е" , "ы" , "о" , "э" , "я" , "и" , "ю"];
+const bukvi="уеыаоэяиюё";
 str=str.toLowerCase();
 let cnt=0;
-for (let i=0, i<str.length, i++) {
+for (let i=0; i<str.length; i++) {
     const bukva=str[i];
 if (bukvi.includes(bukva))
 cnt++;
