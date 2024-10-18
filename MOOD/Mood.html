@@ -13,19 +13,16 @@ function randomDiap(n,m) {
 }
 
 function mood(colorsCount) {
-    const colors=[ '', 'красный', 'оранжевый', 'жёлтый', 'зелёный', 'голубой', 'синий', 'фиолетовый' ];
-    var hesh={};//ключ номер
+    var hesh={'', 'красный', 'оранжевый', 'жёлтый', 'зелёный', 'голубой', 'синий', 'фиолетовый' };
     for ( let i=1; i<=colorsCount; i++ ) {
         do {
         const n=randomDiap(1,7);
-        hesh[i]=n;
+        var cn=colors[n];
     }
     while(n in hesh);
-    var cn=colors[n];
     console.log(cn);
     }
 }
-
 
 
     </script>
