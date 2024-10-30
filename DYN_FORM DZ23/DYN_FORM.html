@@ -9,7 +9,7 @@
 <form  method="post" action="https://fe.it-academy.by/TestForm.php">
 </form>
     <script>
-const generateFormCard = (label,kind,name) => {
+const generateFormCard = (label,kind,name,caption) => {
     return `
     <label>${label}<input type="${kind}" name="${name}"></label>
     `;
@@ -22,7 +22,7 @@ const formDef1=[
 {caption:'Зарегистрироваться',kind:'submit'},
 ];
 const labelsHTML = formDef1.map(Def1 => {
-return generateFormCard (Def1.label, Def1.kind, Def1.name)
+return generateFormCard (Def1.label, Def1.kind, Def1.name,Def1.caption)
 }).join("");
 
 const div = document.createElement("div");
