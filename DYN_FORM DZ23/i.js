@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DYN_FORM</title>
-</head>
-<body>
-<form  method="post" action="https://fe.it-academy.by/TestForm.php">
-</form>
-    <script>
-   const formDef1=
+const formDef1=
 [
 {label:'Название сайта:',kind:'longtext',name:'sitename'},
 // {label:'URL сайта:',kind:'longtext',name:'siteurl'},
@@ -36,18 +25,17 @@
 function buildForm(formDef) {
     for (let itemDef of formDef) {
        
-       
         if (itemDef.kind==="longtext"){
            const labelTag=document.createElement("span");
            labelTag.innerHTML=itemDef.label;
            console.log(labelTag)
-        //    const formTag=document.createElement("form");
-        //    formTag.appendChild(labelTag);
-        //    const inputTag=document.createElement("input");
-        //    inputTag.type="text";
-        //    inputTag.name= itemDef.name;
-        //    formTag.appendChild(inputTag);
-        //    document.body.appendChild(formTag);)
+           const formTag=document.createElement("form");
+           formTag.appendChild(labelTag);
+           const inputTag=document.createElement("input");
+           inputTag.type="text";
+           inputTag.name= itemDef.name;
+           formTag.appendChild(inputTag);
+           document.body.appendChild(formTag);)
         }
         else console.log("jfkjwb")
         
@@ -59,6 +47,3 @@ function buildForm(formDef) {
 buildForm(formDef1)
 // console.log (buildForm(formDef1))
 // console.log()
-    </script>
-</body>
-</html>

@@ -6,30 +6,77 @@
     <title>DYN_FORM</title>
 </head>
 <body>
-<form  method="post" action="https://fe.it-academy.by/TestForm.php">
-</form>
-    <script>
-const generateFormCard = (label,kind,name,caption) => {
-    return `
-    <label>${label}<input type="${kind}" name="${name}"></label>
-    `;
-}
-const formDef1=[
-    {label:'Фамилия:',kind:'longtext',name:'lastname'},
-{label:'Имя:',kind:'longtext',name:'firstname'},
-{label:'Отчество:',kind:'longtext',name:'secondname'},
-{label:'Возраст:',kind:'number',name:'age'},
-{caption:'Зарегистрироваться',kind:'submit'},
-];
-const labelsHTML = formDef1.map(Def1 => {
-return generateFormCard (Def1.label, Def1.kind, Def1.name,Def1.caption)
-}).join("");
 
-const div = document.createElement("div");
-const form = document.querySelector("form");
-form.appendChild(div);
-div.innerHTML = labelsHTML;
-console.log (div)
-    </script>
+
+
+
+<script>
+
+//    const h = document.documentElement;
+//    console.log(h)
+    const formDef1=
+    [
+    {label:'Название сайта:',kind:'longtext',name:'sitename'},
+    {label:'URL сайта:',kind:'longtext',name:'siteurl'},
+    {label:'Посетителей в сутки:',kind:'number',name:'visitors'},
+    {label:'E-mail для связи:',kind:'shorttext',name:'email'},
+    {label:'Рубрика каталога:',kind:'dropdown',name:'division',
+    variants:[{text:'здоровье',value:1},{text:'домашний уют',value:2},{text:'бытовая техника',value:3}]},
+    {label:'Размещение:',kind:'radio',name:'payment',
+    variants:[{text:'бесплатное',value:1},{text:'платное',value:2},{text:'VIP',value:3}]},
+    {label:'Разрешить отзывы:',kind:'check',name:'votes'},
+    {label:'Описание сайта:',kind:'memo',name:'description'},
+    // {caption:'Опубликовать',kind:'submit'},
+    ];
+
+
+
+
+
+
+
+    
+    // // const formDef2=
+    // // [
+    // // {label:'Фамилия:',kind:'longtext',name:'lastname'},
+    // // {label:'Имя:',kind:'longtext',name:'firstname'},
+    // // {label:'Отчество:',kind:'longtext',name:'secondname'},
+    // // {label:'Возраст:',kind:'number',name:'age'},
+    // // {caption:'Зарегистрироваться',kind:'submit'},
+    // // ];
+    
+function buildForm(formDef) {
+    for (let itemDef of formDef1)
+if (itemDef.kind ==="longtext") {
+    const labelTag=document.createElement("span");
+    labelTag.innerHTML=itemDef.label;
+    const formTag=document.createElement("form");
+    formTag.appendChild(labelTag);
+    const inputTag=document.createElement("input");
+    inputTag.type="text";
+    inputTag.name= itemDef.name;
+    formTag.appendChild(inputTag);
+    document.body.appendChild(formTag);
+    console.log(formTag)
+
+} else console.log("2222222222")
+
+}
+   
+    
+    buildForm(formDef1)
+    // // console.log (buildForm(formDef1))
+    // // console.log()
+
+
+
+
+
+</script>
+
+
+
+
+    <!-- <script src="i.js"></script> -->
 </body>
-</html>
+    </html>
