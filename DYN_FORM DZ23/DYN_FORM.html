@@ -7,7 +7,7 @@
   </head>
   <body>
 
-
+    <hr>
 
 
     <script>
@@ -48,17 +48,26 @@
           if (itemDef.kind === "longtext") {
             const inputTag = document.createElement("input");
             inputTag.type = "text";
+            inputTag.style.width='70%';
+            inputTag.style.marginLeft='30px';
             inputTag.name = itemDef.name;
             formTag.appendChild(inputTag);
-            console.log(formTag);
+            const brTag = document.createElement("br");
+            formTag.insertBefore(brTag,formTag.span);
           } 
           
           else if (itemDef.kind === "shorttext") {
            const inputTag = document.createElement("input");
            inputTag.type = "number";
+           inputTag.style.width='15%';
            inputTag.name = itemDef.name;
            formTag.appendChild(inputTag);
-           console.log(formTag);
+
+
+           const brTag = document.createElement("br");
+           formTag.insertBefore(brTag,formTag.span);
+
+           
          } 
          
          else if (itemDef.kind === "number") {
@@ -66,7 +75,10 @@
             inputTag.type = "number";
             inputTag.name = itemDef.name;
             formTag.appendChild(inputTag);
-            console.log(formTag);
+            inputTag.style.width='15%';
+            const brTag = document.createElement("br");
+            formTag.insertBefore(brTag,formTag.span);
+            
           } 
 
           else if (itemDef.kind === "dropdown") {
@@ -78,7 +90,11 @@
          optionTag.value = variant.value;
          inputTag.appendChild(optionTag)}
          formTag.appendChild(inputTag);
-         console.log(formTag)
+
+
+         const brTag = document.createElement("br");
+            formTag.insertBefore(brTag,formTag.span);
+         
      } 
      
      else if (itemDef.kind === "radio") {
@@ -94,32 +110,48 @@
          spanRadioTag.appendChild(inputTag);
         }
         formTag.appendChild(spanRadioTag);
-         console.log(formTag)
+
+        const brTag = document.createElement("br");
+            formTag.insertBefore(brTag,formTag.span);
+         
      }  
      
      else if (itemDef.kind === "check") {
             const inputTag = document.createElement("input");
             inputTag.type = "checkbox";
             inputTag.name = itemDef.name;
+            inputTag.checked= true;
             const defaultTag = document.createElement("default");
             defaultTag.innerHTML = "checked";
             inputTag.appendChild(defaultTag);
             formTag.appendChild(inputTag);
-            console.log(formTag);
+            const brTag = document.createElement("br");
+            formTag.insertBefore(brTag,formTag.span);
           }  
           
           else if (itemDef.kind === "memo") {
            const inputTag = document.createElement("textarea");
+        const brTag = document.createElement("br");
+        formTag.insertBefore(brTag,formTag.inputTag);
+         inputTag.style.width='90%';
            inputTag.name = itemDef.name;
            formTag.appendChild(inputTag);
-           console.log(formTag);
          } 
 
          else if (itemDef.kind === "submit") {
            const inputTag = document.createElement("input");
            inputTag.type = "submit";
            inputTag.value = itemDef.caption;
+
+           const brTag = document.createElement("br");
+           formTag.insertBefore(brTag,formTag.inputTag);
+        
+
+
            formTag.appendChild(inputTag);
+
+
+
            console.log(formTag);
          } 
           
@@ -128,10 +160,20 @@
       
       }
         document.body.appendChild(formTag);
+        const line=document.createElement("hr");
+        document.body.appendChild(line);
       }
 
       buildForm(formDef1);
+
+     
+
       buildForm(formDef2);
+
+      
+      
+
+
     </script>
 
     
