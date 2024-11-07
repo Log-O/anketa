@@ -6,68 +6,134 @@
     <title>DYN_FORM</title>
   </head>
   <body>
+
+
+
+
     <script>
-      //    const h = document.documentElement;
-      //    console.log(h)
+    
       const formDef1 = [
         {label:'Название сайта:',kind:'longtext',name:'sitename'},
         {label:'URL сайта:',kind:'longtext',name:'siteurl'},
         { label: "Посетителей в сутки:", kind: "number", name: "visitors" },
-        // {label:'E-mail для связи:',kind:'shorttext',name:'email'},
-        // {label:'Рубрика каталога:',kind:'dropdown',name:'division',
-        // variants:[{text:'здоровье',value:1},{text:'домашний уют',value:2},{text:'бытовая техника',value:3}]},
-        // {label:'Размещение:',kind:'radio',name:'payment',
-        // variants:[{text:'бесплатное',value:1},{text:'платное',value:2},{text:'VIP',value:3}]},
-        // {label:'Разрешить отзывы:',kind:'check',name:'votes'},
-        // {label:'Описание сайта:',kind:'memo',name:'description'},
-        // {caption:'Опубликовать',kind:'submit'},
+        {label:'E-mail для связи:',kind:'shorttext',name:'email'},
+        {label:'Рубрика каталога:',kind:'dropdown',name:'division',
+        variants:[{text:'здоровье',value:1},{text:'домашний уют',value:2},{text:'бытовая техника',value:3}]},
+        {label:'Размещение:',kind:'radio',name:'payment',
+        variants:[{text:'бесплатное',value:1},{text:'платное',value:2},{text:'VIP',value:3}]},
+        {label:'Разрешить отзывы:',kind:'check',name:'votes'},
+        {label:'Описание сайта:',kind:'memo',name:'description'},
+        {caption:'Опубликовать',kind:'submit'},
       ];
 
-      // // const formDef2=
-      // // [
-      // // {label:'Фамилия:',kind:'longtext',name:'lastname'},
-      // // {label:'Имя:',kind:'longtext',name:'firstname'},
-      // // {label:'Отчество:',kind:'longtext',name:'secondname'},
-      // // {label:'Возраст:',kind:'number',name:'age'},
-      // // {caption:'Зарегистрироваться',kind:'submit'},
-      // // ];
+      const formDef2=
+      [
+      {label:'Фамилия:',kind:'longtext',name:'lastname'},
+      {label:'Имя:',kind:'longtext',name:'firstname'},
+      {label:'Отчество:',kind:'longtext',name:'secondname'},
+      {label:'Возраст:',kind:'number',name:'age'},
+      {caption:'Зарегистрироваться',kind:'submit'},
+      ];
+
+
 
       function buildForm(formDef) {
         const formTag = document.createElement("form");
         for (let itemDef of formDef1){
-            const labelTag = document.createElement("div");
+            if ("label" in itemDef){
+            const labelTag = document.createElement("span");
             labelTag.innerHTML = itemDef.label;
-            formTag.appendChild(labelTag);
+            formTag.appendChild(labelTag);}
+
           if (itemDef.kind === "longtext") {
             const inputTag = document.createElement("input");
             inputTag.type = "text";
             inputTag.name = itemDef.name;
             formTag.appendChild(inputTag);
             console.log(formTag);
-          } else if (itemDef.kind === "shorttext") {
+          } 
+          
+          else if (itemDef.kind === "shorttext") {
            const inputTag = document.createElement("input");
            inputTag.type = "number";
            inputTag.name = itemDef.name;
            formTag.appendChild(inputTag);
            console.log(formTag);
-         } else if (itemDef.kind === "number") {
+         } 
+         
+         else if (itemDef.kind === "number") {
             const inputTag = document.createElement("input");
             inputTag.type = "number";
             inputTag.name = itemDef.name;
             formTag.appendChild(inputTag);
             console.log(formTag);
-          } else console.log("sjdhbkbdfv");
+          } 
 
+          else if (itemDef.kind === "dropdown") {
+    const inputTag = document.createElement("select");
+    inputTag.name = itemDef.name;
+     for (let variant of itemDef.variants) {
+         const optionTag = document.createElement("option");
+         optionTag.innerHTML = variant.text;
+         optionTag.value = variant.value;
+         inputTag.appendChild(optionTag)}
+         formTag.appendChild(inputTag);
+         console.log(formTag)
+     } 
+     
+     else if (itemDef.kind === "radio") {
+    const spanRadioTag = document.createElement("span");
+     for (let variant of itemDef.variants) {
+        const inputTag = document.createElement("input");
+          inputTag.type = itemDef.kind;
+         inputTag.name = itemDef.name;
+         inputTag.value = variant.value;
+         const spanInInput = document.createElement("span");
+         spanInInput.innerHTML = variant.text;
+         inputTag.appendChild(spanInInput);
+         spanRadioTag.appendChild(inputTag);
+        }
+        formTag.appendChild(spanRadioTag);
+         console.log(formTag)
+     }  
+     
+     else if (itemDef.kind === "check") {
+            const inputTag = document.createElement("input");
+            inputTag.type = "checkbox";
+            inputTag.name = itemDef.name;
+            const defaultTag = document.createElement("default");
+            defaultTag.innerHTML = "checked";
+            inputTag.appendChild(defaultTag);
+            formTag.appendChild(inputTag);
+            console.log(formTag);
+          }  
+          
+          else if (itemDef.kind === "memo") {
+           const inputTag = document.createElement("textarea");
+           inputTag.name = itemDef.name;
+           formTag.appendChild(inputTag);
+           console.log(formTag);
+         } 
+
+         else if (itemDef.kind === "submit") {
+           const inputTag = document.createElement("input");
+           inputTag.type = "submit";
+           inputTag.value = itemDef.caption;
+           formTag.appendChild(inputTag);
+           console.log(formTag);
+         } 
+          
+          
+        
+      
       }
-
         document.body.appendChild(formTag);
       }
 
       buildForm(formDef1);
-      // // console.log (buildForm(formDef1))
-      // // console.log()
+      buildForm(formDef2);
     </script>
 
-    <!-- <script src="i.js"></script> -->
+    
   </body>
 </html>

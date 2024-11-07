@@ -47,3 +47,25 @@ function buildForm(formDef) {
 buildForm(formDef1)
 // console.log (buildForm(formDef1))
 // console.log()
+
+
+
+else if (itemDef.kind === "dropdown") {
+    const inputTag = document.createElement("select");
+    inputTag.name = itemDef.name;
+     for (let variant of itemDef.variants) {
+         const optionTag = document.createElement("option");
+         optionTag.innerHTML = variant.text;
+         optionTag.value = variant.value;
+         inputTag.appendChild(optionTag)
+         console.log(formTag);}
+     } else if (itemDef.kind === "radio") {
+    const inputTag = document.createElement("radio");
+    inputTag.name = itemDef.name;
+     for (let variant of itemDef.variants) {
+         const optionTag = document.createElement("span");
+         optionTag.innerHTML = variant.text;
+         inputTag.value = variant.value;
+         console.log(formTag);}
+         // inputTag.appendChild(optionTag)
+     }
