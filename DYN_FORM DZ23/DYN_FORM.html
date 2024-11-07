@@ -55,7 +55,6 @@
             labelTag.innerHTML = itemDef.label;
             formTag.appendChild(labelTag);
           }
-
           if (itemDef.kind === "longtext") {
             const inputTag = document.createElement("input");
             inputTag.type = "text";
@@ -71,7 +70,6 @@
             inputTag.style.width = "15%";
             inputTag.name = itemDef.name;
             formTag.appendChild(inputTag);
-
             const brTag = document.createElement("br");
             formTag.insertBefore(brTag, formTag.span);
           } else if (itemDef.kind === "number") {
@@ -92,7 +90,6 @@
               inputTag.appendChild(optionTag);
             }
             formTag.appendChild(inputTag);
-
             const brTag = document.createElement("br");
             formTag.insertBefore(brTag, formTag.span);
           } else if (itemDef.kind === "radio") {
@@ -108,7 +105,6 @@
               spanRadioTag.appendChild(inputTag);
             }
             formTag.appendChild(spanRadioTag);
-
             const brTag = document.createElement("br");
             formTag.insertBefore(brTag, formTag.span);
           } else if (itemDef.kind === "check") {
@@ -133,13 +129,9 @@
             const inputTag = document.createElement("input");
             inputTag.type = "submit";
             inputTag.value = itemDef.caption;
-
             const brTag = document.createElement("br");
             formTag.insertBefore(brTag, formTag.inputTag);
-
             formTag.appendChild(inputTag);
-
-            console.log(formTag);
           }
         }
         document.body.appendChild(formTag);
