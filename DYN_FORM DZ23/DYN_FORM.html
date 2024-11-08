@@ -49,6 +49,7 @@
 
       function buildForm(formDef) {
         const formTag = document.createElement("form");
+        
         for (let itemDef of formDef1) {
           if ("label" in itemDef) {
             const labelTag = document.createElement("span");
@@ -92,7 +93,8 @@
             formTag.appendChild(inputTag);
             const brTag = document.createElement("br");
             formTag.insertBefore(brTag, formTag.span);
-          } else if (itemDef.kind === "radio") {
+          } 
+          else if (itemDef.kind === "radio") {
             const spanRadioTag = document.createElement("span");
             for (let variant of itemDef.variants) {
               const inputTag = document.createElement("input");
@@ -101,13 +103,15 @@
               inputTag.value = variant.value;
               const spanInInput = document.createElement("span");
               spanInInput.innerHTML = variant.text;
-              inputTag.appendChild(spanInInput);
               spanRadioTag.appendChild(inputTag);
+              spanRadioTag.appendChild(spanInInput);
             }
             formTag.appendChild(spanRadioTag);
             const brTag = document.createElement("br");
             formTag.insertBefore(brTag, formTag.span);
-          } else if (itemDef.kind === "check") {
+          } 
+          
+          else if (itemDef.kind === "check") {
             const inputTag = document.createElement("input");
             inputTag.type = "checkbox";
             inputTag.name = itemDef.name;
