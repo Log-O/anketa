@@ -9,6 +9,7 @@
     <hr />
 
     <script>
+
       const formDef1 = [
         { label: "Название сайта:", kind: "longtext", name: "sitename" },
         { label: "URL сайта:", kind: "longtext", name: "siteurl" },
@@ -51,7 +52,7 @@
         const formTag = document.createElement("form");
         formTag.action = "https://fe.it-academy.by/TestForm.php";
         formTag.method = "post";
-        for (let itemDef of formDef1) {
+        for (let itemDef of formDef) {
           if ("label" in itemDef) {
             const labelTag = document.createElement("span");
             labelTag.innerHTML = itemDef.label;
@@ -142,10 +143,12 @@
         document.body.appendChild(formTag);
         const line = document.createElement("hr");
         document.body.appendChild(line);
+        
       }
 
-      buildForm(formDef1);
 
+      
+      buildForm(formDef1);
       buildForm(formDef2);
     </script>
   </body>
