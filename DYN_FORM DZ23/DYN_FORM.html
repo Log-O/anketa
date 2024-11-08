@@ -49,7 +49,8 @@
 
       function buildForm(formDef) {
         const formTag = document.createElement("form");
-        
+        formTag.action = "https://fe.it-academy.by/TestForm.php";
+        formTag.method = "post";
         for (let itemDef of formDef1) {
           if ("label" in itemDef) {
             const labelTag = document.createElement("span");
