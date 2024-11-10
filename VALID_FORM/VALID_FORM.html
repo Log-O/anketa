@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VALID_FORM</title>
+  </head>
+  <body>
+    <h1>VALID_FORM</h1>
+    <form action="https://fe.it-academy.by/TestForm.php" method="post">
+      <span>Разработчики:</span>
+      <input type="text" name="razr" style="width: 60%" /> <br />
+
+      <span>Название сайта:</span>
+      <input type="text" name="sitename" style="width: 60%" /> <br />
+
+      <span>URL сайта:</span>
+      <input type="text" name="url" style="width: 40%" /><br />
+      <span>Дата запуска сайта:</span>
+      <input type="data" name="data" style="width: 80px" /><br />
+      <span>Посетителей в сутки:</span>
+      <input type="number" name="kolvo" style="width: 80px" /><br />
+      <span>E-mail для связи:</span>
+      <input type="text" name="mail" style="width: 20%" /><br />
+
+      <span>Рубрика каталога:</span>
+      <select type="text" name="katalog">
+        <option value="1">здоровье</option>
+        <option value="2">дом уют</option>
+        <option value="3">быт тех</option></select
+      ><br />
+
+      <span>Размещение:</span>
+      <input type="radio" name="razme" value="1" /> <span>бесплатное</span>
+      <input type="radio" name="razme" value="2" /> <span>платное</span>
+      <input type="radio" name="razme" value="3" /> <span>VIP</span><br />
+
+      <span>Разрешить отзывы:</span>
+      <input type="checkbox" name="otziv" /><br />
+
+      <span>Описание сайта:</span> <br />
+      <textarea name="sitename" style="width: 60%; height: 50px"> </textarea
+      ><br />
+
+      <input type="submit" value="Опубликовать" />
+    </form>
+  </body>
+</html>
