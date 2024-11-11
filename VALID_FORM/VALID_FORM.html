@@ -7,15 +7,15 @@
   </head>
   <body>
     <h1>VALID_FORM</h1>
-    <form action="https://fe.it-academy.by/TestForm.php" method="post">
+    <form action="https://fe.it-academy.by/TestForm.php" method="post" name="fff">
       <span>Разработчики:</span>
-      <input type="text" name="razr" style="width: 60%" /> <br />
+      <input type="text" name="razr" style="width: 60%" /> <span id="razrErr" style="color: red;"></span> <br />
 
       <span>Название сайта:</span>
-      <input type="text" name="sitename" style="width: 60%" /> <br />
+      <input type="text" name="nazv" style="width: 60%" /> <span id="nazvErr" style="color: red;"></span> <br />
 
       <span>URL сайта:</span>
-      <input type="text" name="url" style="width: 40%" /><br />
+      <input type="text" name="url" style="width: 40%" /> <span id="urlErr" style="color: red;"></span><br />
       <span>Дата запуска сайта:</span>
       <input type="data" name="data" style="width: 80px" /><br />
       <span>Посетителей в сутки:</span>
@@ -44,5 +44,106 @@
 
       <input type="submit" value="Опубликовать" />
     </form>
+
+<script>
+
+
+
+
+
+
+
+// RAZRABOT
+
+const razrInput=document.getElementsByName("razr");
+const razrErr=document.getElementsById("razrErr");
+razrInput.addEventListener("blur",() => razrValid(false));
+
+
+function razrValid(focusOnError) {
+    eo=eo||window.event;
+let errFlag=false;
+
+    if(!razrInput.value){
+        razrErr.innerHTML="Введите фамилию!";
+        errFlag=true;
+if (focusOnError){
+    razrInput.focus();
+}
+
+    } else razrErr.innerHTML="";
+    return errFlag;
+}
+
+// NAZVANIE
+const nazvInput=document.getElementsByName("nazv");
+nazvInput.addEventListener("blur",() =>nazvValid(false));
+const nazvErr=document.getElementsById("nazvErr");
+
+function nazvValid(focusOnError) {
+    eo=eo||window.event;
+    let errFlag=false;
+    if(!nazvInput.value){
+        nazvErr.innerHTML="Введите название!";
+        errFlag=true;
+
+if (focusOnError){
+   nazvInput.focus();
+}
+
+    } else nazvErr.innerHTML="";
+
+    return errFlag;
+}
+
+
+
+// URL
+const urlInput=document.getElementsByName("url");
+urlInput.addEventListener("blur",() =>urlValid(false));
+const urlErr=document.getElementsById("urlErr");
+
+function urlValid(focusOnError) {
+    eo=eo||window.event;
+    let errFlag=false;
+    if(!urlInput.value){
+        urlErr.innerHTML="Введите название!";
+        errFlag=true;
+        if (focusOnError){
+    urlInput.focus();
+}
+    } else urlErr.innerHTML="";
+
+    return errFlag;
+}
+
+
+forms.fff.addEventListener("submit",formSubmit);
+
+function formSubmit(eo) {
+let errFlag=false;
+
+errFlag=errFlag||razrValid(!errFlag);
+errFlag=errFlag||nazvValid(!errFlag);
+errFlag=errFlag||urlValid(!errFlag);
+
+   if(errFlag){
+    eo.preventDefault();
+   }
+
+}
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
   </body>
 </html>
