@@ -5,15 +5,54 @@
     <title>drag&amp;drop</title>
   </head>
   <body style='min-height: 100vh'>
-<img src='http://fe.it-academy.by/Sites/0000007/sax.jpg'>
-<img src='http://fe.it-academy.by/Sites/0000007/Yin_and_Yang.png' width=100>
-<img src='http://fe.it-academy.by/Sites/0000007/Man-and-woman.png' width=150>
-<img src='http://fe.it-academy.by/Sites/0000007/No_smoking.png' style='padding-left: 50px'>
+<img src='http://fe.it-academy.by/Sites/0000007/sax.jpg' id="sax">
+<img src='http://fe.it-academy.by/Sites/0000007/Yin_and_Yang.png' width=100 id="yang">
+<img src='http://fe.it-academy.by/Sites/0000007/Man-and-woman.png' width=150 id="man">
+<img src='http://fe.it-academy.by/Sites/0000007/No_smoking.png' style='padding-left: 50px' id="smok">
 
 <script>
-  // здесь ваш код
+const dragTag = document.getElementsByTagName(img);
+console.log(dragTag)
+
+
+
+
+
+
+//   const saxTag=document.getElementById(sax);
+//   saxTag.style.position="absolut";
+//   const yangTag=document.getElementById(yang);
+//   yangTag.style.position="absolut";
+//   const manTag=document.getElementById(man);
+//   manTag.style.position="absolut";
+//   const smokTag=document.getElementById(smok);
+//   smokTag.style.position="absolut";
+
+
+
+
 
 </script>
 
   </body>
 </html>
+
+<!-- Реализовать на JavaScript возможность перетаскивания мышью по веб-странице этих
+картинок. Обрабатывать как минимум события mousedown, mousemove, mouseup;
+поддержку браузером drag&drop не использовать.
+Использовать именно абсолютное позиционирование.
+Изображения должны «таскаться» мышью за любую точку (т.е. и при «взятии» и при
+«отпускании» изображение смещаться не должно, оно должно смещаться только при
+смещении мыши при нажатой левой кнопке, ровно настолько, насколько смещена мышь).
+Код не должен зависеть от количества картинок (т.е. код должен сам найти все
+картинки, которые есть на веб-странице).
+Код никак не должен зависеть от того, как именно свёрстаны картинки — какие
+атрибуты и стилевые свойства им заданы.
+Когда начинается перетаскивание какой-либо картинки, остальные картинки не должны
+сдвигаться.
+Картинка, перетаскивание которой началось, должна сразу оказаться выше (ближе к
+глазам), чем остальные (z-index). После окончания перетаскивания картинки z-index
+ни одной из картинок меняться не должен, т.е. взаимный z-index картинок должен
+остаться тем же, каким был во время перетаскивания.
+На время перетаскивания менять форму курсора на какую-нибудь подходящую.
+Вёрстку страницы никак не менять; вся работа — только внутри тега <scr -->
