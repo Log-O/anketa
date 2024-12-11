@@ -31,28 +31,28 @@ window.addEventListener("keyup",keyUp);
 
 function keyDown(eo) {
     console.log(eo);
-    switch(eo.keyCode) {
-        case "16": racketLeft.speedY=-1;
+    switch(eo.key) {
+        case "Shift": racketLeft.speedY=-4;
         break;
-        case "17": racketLeft.speedY=1;
+        case "Control": racketLeft.speedY=4;
         break;
-        case "38": racketRight.speedY=-1;
+        case "ArrowUp": racketRight.speedY=-4;
         break;
-        case "40": racketRight.speedY=1;
+        case "ArrowDown": racketRight.speedY=4;
         break;
     }
 }
 
 function keyUp(eo) {
     console.log(eo);
-    switch(eo.keyCode) {
-        case "16": racketLeft.speedY=0;
+    switch(eo.key) {
+        case "Shift": racketLeft.speedY=0;
         break;
-        case "17": racketLeft.speedY=0;
+        case "Control": racketLeft.speedY=0;
         break;
-        case "38": racketRight.speedY=0;
+        case "ArrowUp": racketRight.speedY=0;
         break;
-        case "40": racketRight.speedY=0;
+        case "ArrowDown": racketRight.speedY=0;
         break;
     }
 }
@@ -144,26 +144,28 @@ let racketRight = { y : 90 , speedY : 0 }
             }
 
 // двжение Левой рокетки
+const racketLeftElem= document.getElementById('Blue');
+
 racketLeft.y+= racketLeft.speedY
 
 if (racketLeft.y<0) {
     racketLeft.y=0
 }
-if (racketLeft.y>360) {
-    racketLeft.y=360
+if (racketLeft.y>260) {
+    racketLeft.y=260
 }
-const racketLeftElem= document.getElementById('Blue');
+
 racketLeftElem.style.top=racketLeft.y+"px";
 
 
 // двжение Правой рокетки
 racketRight.y+= racketRight.speedY
 
-if (racketRight.y<0) {
-    racketRight.y=0
+if (racketRight.y<-40) {
+    racketRight.y=-40
 }
-if (racketRight.y>360) {
-    racketRight.y=360
+if (racketRight.y>220) {
+    racketRight.y=220
 }
 const racketRightElem=
                     document.getElementById('Red');
