@@ -5,28 +5,33 @@
     <title>drag&amp;drop</title>
   </head>
   <body style='min-height: 100vh'>
-<img src='http://fe.it-academy.by/Sites/0000007/sax.jpg' id="sax">
-<img src='http://fe.it-academy.by/Sites/0000007/Yin_and_Yang.png' width=100 id="yang">
-<img src='http://fe.it-academy.by/Sites/0000007/Man-and-woman.png' width=150 id="man">
-<img src='http://fe.it-academy.by/Sites/0000007/No_smoking.png' style='padding-left: 50px' id="smok">
+<img src='http://fe.it-academy.by/Sites/0000007/sax.jpg' >
+<img src='http://fe.it-academy.by/Sites/0000007/Yin_and_Yang.png' width=100 >
+<img src='http://fe.it-academy.by/Sites/0000007/Man-and-woman.png' width=150 >
+<img src='http://fe.it-academy.by/Sites/0000007/No_smoking.png' style='padding-left: 50px' >
 
 <script>
-const dragTag = document.getElementsByTagName(img);
-console.log(dragTag)
+const imgTag = document.getElementsByTagName("img");
+console.log(imgTag);
+
+for (let i=0; i<imgTag.length; i++){
+    const imgTagPosition = imgTag[i];
+    imgTagPosition.style.position = "absolute";
+    // для видимости красный бэкграунд
+    imgTagPosition.style.background = "red";}
+
+
+// над боди делаем дропы
+
+const bodyTag = document.getElementsByTagName("body");
 
 
 
 
 
 
-//   const saxTag=document.getElementById(sax);
-//   saxTag.style.position="absolut";
-//   const yangTag=document.getElementById(yang);
-//   yangTag.style.position="absolut";
-//   const manTag=document.getElementById(man);
-//   manTag.style.position="absolut";
-//   const smokTag=document.getElementById(smok);
-//   smokTag.style.position="absolut";
+
+
 
 
 
@@ -36,6 +41,12 @@ console.log(dragTag)
 
   </body>
 </html>
+
+
+<!-- надо програмно найти их координаты и потом присвоить координаты -->
+<!-- network ставить disable network cachev -->
+ <!-- не использовать события мыши, связанные с drag&drop, такие как dragstart и т.д -->
+
 
 <!-- Реализовать на JavaScript возможность перетаскивания мышью по веб-странице этих
 картинок. Обрабатывать как минимум события mousedown, mousemove, mouseup;

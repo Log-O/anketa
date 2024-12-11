@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+  
+    
+    <input type='button' value='Пуск!' onclick='start()'>
+    <br /><br />
+    <div style='width: 400px; height: 300px;
+        border: solid black 1px; position: relative'>
+       <img src='ball.gif' id='Ball'
+       style='position: absolute; width: 10px; height: 10px;'>
+              
+                   <div style='width: 5px; height: 40px;
+                   background-color: blue; position: relative;  ' id='Blue'></div>
+       
+       <div style='width: 5px; height: 40px;
+                   background-color: red; position: relative;   right: -395px;' id='Red'></div>
+    </div>
+    
+    <script>
+    // сделаем передвижение рокеток
+
+window.addEventListener("keydown",keyDown);
+window.addEventListener("keyup",keyUp);
+
+function keyDown(eo) {
+    console.log(eo);
+    switch(eo.keyCode) {
+        case "16": racketLeft.speedY=-1;
+        break;
+        case "17": racketLeft.speedY=1;
+        break;
+        case "38": racketRight.speedY=-1;
+        break;
+        case "40": racketRight.speedY=1;
+        break;
+    }
+}
+
+function keyUp(eo) {
+    console.log(eo);
+    switch(eo.keyCode) {
+        case "16": racketLeft.speedY=0;
+        break;
+        case "17": racketLeft.speedY=0;
+        break;
+        case "38": racketRight.speedY=0;
+        break;
+        case "40": racketRight.speedY=0;
+        break;
+    }
+}
+
+// var Blue = document.getElementById("Blue");
+// var Red = document.getElementById("Red");
+// var centOfTopBlue = 130;
+// var centOfTopRed = 90;
+
+// document.onkeydown = function(event) {
+//     console.log(event);
+   
+
+//     if (event.code =='ControlLeft') {
+//         Blue.style.top = centOfTopBlue + "px";
+//         centOfTopBlue++;
+//     }
+//     else 
+//     if (event.code =="ShiftLeft" ) {
+//         Blue.style.top = centOfTopBlue + "px";
+//         centOfTopBlue--;
+//     }
+//     else 
+//     if (event.code =="ArrowDown" ) {
+//         Red.style.top = centOfTopRed + "px";
+//         centOfTopRed++;
+//     }
+//     else 
+//     if (event.code =="ArrowUp" ) {
+//         Red.style.top = centOfTopRed + "px";
+//         centOfTopRed--;
+//     }
+// }
+
+
+
+    // 1111111Дальше движение шарика
+        let ballH={
+            posX : 30,
+            posY : 30,
+            speedX : 2,
+            speedY : 1,
+            width : 10,
+            height: 10,
+    
+            update : function() {
+                const ballElem=
+                    document.getElementById('Ball');
+                ballElem.style.left=this.posX+"px";
+                ballElem.style.top=this.posY+"px";
+            }
+        }
+    
+let racketLeft = { y : 130, speedY : 0 }
+let racketRight = { y : 90 , speedY : 0 }
+
+
+        let areaH={
+            width : 400,
+            height : 300
+        }
+    
+        function start() {
+            // плавное движение - от 25 кадр/сек
+            setInterval(tick,40);
+        }
+    
+        function tick() {
+    
+
+
+            ballH.posX+=ballH.speedX;
+            // вылетел ли мяч правее стены?
+            if ( ballH.posX+ballH.width>areaH.width ) {
+                ballH.speedX=-ballH.speedX;
+                ballH.posX=areaH.width-ballH.width;
+            }
+            // вылетел ли мяч левее стены?
+            if ( ballH.posX<0 ) {
+                ballH.speedX=-ballH.speedX;
+                ballH.posX=0;
+            }
+    
+            ballH.posY+=ballH.speedY;
+            // вылетел ли мяч ниже пола?
+            if ( ballH.posY+ballH.height>areaH.height ) {
+                ballH.speedY=-ballH.speedY;
+                ballH.posY=areaH.height-ballH.height;
+            }
+
+// двжение Левой рокетки
+racketLeft.y+= racketLeft.speedY
+
+if (racketLeft.y<0) {
+    racketLeft.y=0
+}
+if (racketLeft.y>360) {
+    racketLeft.y=360
+}
+const racketLeftElem= document.getElementById('Blue');
+racketLeftElem.style.top=racketLeft.y+"px";
+
+
+// двжение Правой рокетки
+racketRight.y+= racketRight.speedY
+
+if (racketRight.y<0) {
+    racketRight.y=0
+}
+if (racketRight.y>360) {
+    racketRight.y=360
+}
+const racketRightElem=
+                    document.getElementById('Red');
+                    racketRightElem.style.top=racketRight.y+"px";
+
+// 222222222222   попадание шарика в ракетнку
+
+
+
+
+
+
+
+            // вылетел ли мяч выше потолка?
+            if ( ballH.posY<0 ) {
+                ballH.speedY=-ballH.speedY;
+                ballH.posY=0;
+            }
+    
+            ballH.update();
+        }
+    
+        ballH.update();
+    
+    </script>
+
+
+</body>
+</html>
