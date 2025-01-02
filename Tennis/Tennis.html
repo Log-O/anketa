@@ -24,13 +24,13 @@
     </div>
     
     <script>
-    // сделаем передвижение рокеток
+    // сделаем передвижение ракеток
 
 window.addEventListener("keydown",keyDown);
 window.addEventListener("keyup",keyUp);
 
 function keyDown(eo) {
-    console.log(eo);
+  
     switch(eo.key) {
         case "Shift": racketLeft.speedY=-4;
         break;
@@ -44,7 +44,7 @@ function keyDown(eo) {
 }
 
 function keyUp(eo) {
-    console.log(eo);
+    
     switch(eo.key) {
         case "Shift": racketLeft.speedY=0;
         break;
@@ -56,38 +56,6 @@ function keyUp(eo) {
         break;
     }
 }
-
-// var Blue = document.getElementById("Blue");
-// var Red = document.getElementById("Red");
-// var centOfTopBlue = 130;
-// var centOfTopRed = 90;
-
-// document.onkeydown = function(event) {
-//     console.log(event);
-   
-
-//     if (event.code =='ControlLeft') {
-//         Blue.style.top = centOfTopBlue + "px";
-//         centOfTopBlue++;
-//     }
-//     else 
-//     if (event.code =="ShiftLeft" ) {
-//         Blue.style.top = centOfTopBlue + "px";
-//         centOfTopBlue--;
-//     }
-//     else 
-//     if (event.code =="ArrowDown" ) {
-//         Red.style.top = centOfTopRed + "px";
-//         centOfTopRed++;
-//     }
-//     else 
-//     if (event.code =="ArrowUp" ) {
-//         Red.style.top = centOfTopRed + "px";
-//         centOfTopRed--;
-//     }
-// }
-
-
 
     // 1111111Дальше движение шарика
         let ballH={
@@ -106,8 +74,8 @@ function keyUp(eo) {
             }
         }
     
-let racketLeft = { y : 130, speedY : 0 }
-let racketRight = { y : 90 , speedY : 0 }
+let racketLeft = { y : 0, speedY : 0 }
+let racketRight = { y : 0 , speedY : 0 }
 
 
         let areaH={
@@ -143,7 +111,7 @@ let racketRight = { y : 90 , speedY : 0 }
                 ballH.posY=areaH.height-ballH.height;
             }
 
-// двжение Левой рокетки
+// двжение Левой ракетки
 const racketLeftElem= document.getElementById('Blue');
 
 racketLeft.y+= racketLeft.speedY
@@ -158,7 +126,7 @@ if (racketLeft.y>260) {
 racketLeftElem.style.top=racketLeft.y+"px";
 
 
-// двжение Правой рокетки
+// двжение Правой ракетки
 racketRight.y+= racketRight.speedY
 
 if (racketRight.y<-40) {
@@ -173,9 +141,24 @@ const racketRightElem=
 
 // 222222222222   попадание шарика в ракетнку
 
+// в левую
+if (ballH.posX<6 && (ballH.posY+ballH.height/2)>racketLeft.y && (ballH.posY+ballH.height/2)<(racketLeft.y+40)) {
+    ballH.speedY=-ballH.speedY;
+}
+// в правую 
+console.log(ballH.posX);
+console.log(ballH.posY);
+console.log((racketRight.y+80));
+console.log((racketRight.y+40));
 
+if ((ballH.posX+ballH.width)>395 && (ballH.posY+ballH.height/2)<(racketRight.y+80) && (ballH.posY+ballH.height/2)>(racketRight.y+40)) {
+    ballH.speedY=-ballH.speedY;
 
+    // ballH.speedY=0;
+    // ballH.speedX=0;
+}
 
+// && ballH.posY<racketLeft.y && ballH.posY<(racketLeft.y+40)
 
 
 

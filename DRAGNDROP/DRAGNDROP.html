@@ -11,25 +11,122 @@
 <img src='http://fe.it-academy.by/Sites/0000007/No_smoking.png' style='padding-left: 50px' >
 
 <script>
-const imgTag = document.getElementsByTagName("img");
-console.log(imgTag);
 
-for (let i=0; i<imgTag.length; i++){
-    const imgTagPosition = imgTag[i];
-    imgTagPosition.style.position = "absolute";
-    // для видимости красный бэкграунд
-    imgTagPosition.style.background = "red";}
+window.onload=()=>{
 
-
-// над боди делаем дропы
-
-const bodyTag = document.getElementsByTagName("body");
+let lastZIndex =10;
 
 
 
 
+const images = [...document.getElementsByTagName("img")];
+console.log(images);
 
 
+const sizes=images.map(image => image.getBoundingClientRect());
+
+console.log(sizes);
+// console.log(image);
+
+
+let image;
+
+images.forEach((image,index) => {
+  image.style.position = "absolute";
+  image.style.left = sizes[index].x + "px";
+  image.style.top = sizes[index].y + "px";
+  console.log(image.style.left);
+  image.addEventListener("mousedown", mouseDown);
+  image.addEventListener("mouseup", mouseUp);
+  image.setAttribute("draggable", false);
+});
+
+
+// alert("ghbdtn");
+
+function mouseDown(eo) {
+
+  // eo=eo||window.event;
+  
+  console.log(eo.target.style.left);
+  // debugger
+  document.addEventListener("mousemove",mouseMove);
+  console.log('eo = '+eo);
+  // debugger
+  lastZIndex++;
+eo.target.style.zIndex=lastZIndex;
+
+console.log(lastZIndex);
+
+let shiftX;
+let shiftY;
+
+shiftX = eo.clientX - eo.target.getBoundingClientRect().left;
+shiftY = eo.clientY - eo.target.getBoundingClientRect().top;
+console.log(shiftX);
+console.log(shiftY);
+
+
+//   // const image = eo.target;
+//   image.setAttribute("draggable", true);
+//   debugger
+ 
+//   console.log("hello");
+
+
+
+
+function mouseMove(eo) {
+  eo.target.setAttribute("draggable", true);
+  // debugger
+  // eo=eo||window.event;
+  eo.target.style.left = eo.pageX - shiftX + 'px';
+  eo.target.style.top = eo.pageY - shiftY + 'px';
+
+  console.log(eo.target.style.left);
+  // debugger
+ 
+  
+  // ball.style.left = e.pageX - ball.offsetWidth / 2 + 'px';
+  // ball.style.top = e.pageY - ball.offsetHeight / 2 + 'px';
+  // eo.target.left = eo.target.pageX - image.offsetWidth / 2 + 'px';
+  // // debugger
+  // eo.target.top = eo.target.pageY - image.offsetHeight / 2 + 'px';
+
+
+  function mouseUp(eo) {
+  // debugger
+  eo.target.setAttribute("draggable", false);
+  // console.log("heo");
+  document.removeEventListener("mousemove",mouseMove);
+//   event.preventDefault();
+  // document.onmousemove = null;
+//   eo.target.onmouseup = null;
+}
+}
+
+
+}
+
+
+function mouseUp(eo) {
+  // debugger
+  // // eo=eo||window.event;
+  // console.log("heo");
+  document.removeEventListener("mousemove",mouseMove);
+//   event.preventDefault();
+  // document.onmousemove = null;
+//   eo.target.onmouseup = null;
+}
+
+// function moveAt(eo) {
+//   image.style.left = eo.pageX - image.offsetWidth / 2 + 'px';
+//   image.style.top = eo.pageY - image.offsetHeight / 2 + 'px';
+//   }
+
+
+
+}
 
 
 
