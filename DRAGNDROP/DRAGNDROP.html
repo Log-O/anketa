@@ -65,7 +65,7 @@ shiftX = eo.clientX - eo.target.getBoundingClientRect().left;
 shiftY = eo.clientY - eo.target.getBoundingClientRect().top;
 console.log(shiftX);
 console.log(shiftY);
-
+eo.target.setAttribute("draggable", true);
 
 //   // const image = eo.target;
 //   image.setAttribute("draggable", true);
@@ -77,7 +77,7 @@ console.log(shiftY);
 
 
 function mouseMove(eo) {
-  eo.target.setAttribute("draggable", true);
+  
   // debugger
   // eo=eo||window.event;
   eo.target.style.left = eo.pageX - shiftX + 'px';
@@ -87,22 +87,13 @@ function mouseMove(eo) {
   // debugger
  
   
-  // ball.style.left = e.pageX - ball.offsetWidth / 2 + 'px';
-  // ball.style.top = e.pageY - ball.offsetHeight / 2 + 'px';
+  
   // eo.target.left = eo.target.pageX - image.offsetWidth / 2 + 'px';
   // // debugger
   // eo.target.top = eo.target.pageY - image.offsetHeight / 2 + 'px';
 
 
-  function mouseUp(eo) {
-  // debugger
-  eo.target.setAttribute("draggable", false);
-  // console.log("heo");
-  document.removeEventListener("mousemove",mouseMove);
-//   event.preventDefault();
-  // document.onmousemove = null;
-//   eo.target.onmouseup = null;
-}
+  
 }
 
 
@@ -124,7 +115,15 @@ function mouseUp(eo) {
 //   image.style.top = eo.pageY - image.offsetHeight / 2 + 'px';
 //   }
 
-
+function mouseUp(eo) {
+  // debugger
+  eo.target.setAttribute("draggable", false);
+  // console.log("heo");
+  document.removeEventListener("mousemove",mouseMove);
+//   event.preventDefault();
+  // document.onmousemove = null;
+//   eo.target.onmouseup = null;
+}
 
 }
 
