@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web_Game</title>
+    <title>Web_Game_Oleg</title>
     <link rel="stylesheet" href="css_web_game.css">
     
 </head>
 <body>
-    <canvas id="myCanvas" width="600" height="500"></canvas>
+    <div id="modal">
+        <p>Выберите уровень</p><br>
+        <button id="Novichek" class="myButton">Новичек</button><br>
+        <button id="Master"class="myButton">Мастер</button><br>
+        <button id="Profi"class="myButton">Профессионал</button><br>
+    </div>
+    <canvas id="myCanvas" width="600" height="450"></canvas>
     <video id="myVideo" playsinline autoplay muted loop>  
         <source src="cosmos.mp4" type="video/mp4">
       </video>

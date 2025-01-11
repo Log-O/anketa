@@ -9,13 +9,8 @@ body {
   padding-top: 50px;
 }
 #myCanvas {
-  /* position: absolute;
-  top: 50%;
-  left: 50%; */
-  /* width: 1000px;
-  height: 600px; */
-  /* transform: translateX(-50%) translateY(-50%); */
-
+  position: absolute;
+left: 27%;
 border:solid;
 border-color: rgb(38, 8, 83);
     background: transparent;
@@ -23,15 +18,42 @@ border-color: rgb(38, 8, 83);
     overflow: visible;
     margin: 50px auto;
   }
+
+  
    #myVideo {
     position: absolute;
     top: 50%;
     left: 50%;
-    /* min-width: 100%;
-    min-height: 100%; */
     width: 100%;
     height: auto;
-    
     z-index: -1000;
     transform: translateX(-50%) translateY(-50%);
+}
+
+#modal{
+    position: absolute;
+    z-index: 2000;
+    width: 400px;
+    height: 300px;
+    top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translateX(-50%) translateY(-50%);
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    cursor: default;
+    padding-top:  50px;
+}
+
+
+.myButton {
+  background-color: #261360;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 10px 2px;
+  cursor: pointer;
 }

@@ -1,6 +1,7 @@
+
 var canvas = document.getElementById("myCanvas");
+var modal = document.getElementById("modal");
 canvas.style.zIndex = 1000;
-// canvas.style.overflow = "visible";
 var ctx = canvas.getContext("2d");
 var ballRadius = 7;
 var x = canvas.width/2;
@@ -21,6 +22,10 @@ var brickOffsetTop = 30;
 var brickOffsetLeft = 45;
 var score = 0;
 var lives = 10;
+var audioBall = new Audio('kra.mp3');
+var audioWin = new Audio('win.mp3');
+var audioTouch = new Audio('touch.mp3');
+var audioLoze = new Audio('loze.mp3');
 
 var bricks = [];
 for(var c=0; c<brickColumnCount; c++) {
@@ -50,6 +55,10 @@ function keyUpHandler(e) {
         leftPressed = false;
     }
 }
+
+
+
+
 function mouseMoveHandler(e) {
     var relativeX = e.clientX - canvas.offsetLeft;
     if(relativeX > 0 && relativeX < canvas.width) {
@@ -57,10 +66,7 @@ function mouseMoveHandler(e) {
     }
 }
 
-// здесь будут уровни
-function levels() {
-    alert
-}
+
 
 function collisionDetection() {
     for(var c=0; c<brickColumnCount; c++) {
@@ -69,10 +75,11 @@ function collisionDetection() {
             if(b.status == 1) {
                 if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
                     dy = -dy;
+                    audioTouch.play();
                     b.status = 0;
                     score++;
                     if(score == brickRowCount*brickColumnCount) {
-                        alert("YOU WIN, CONGRATS!");
+                        alert("Поздравляем вы выиграли!");
                         document.location.reload();
                     }
                 }
@@ -107,10 +114,6 @@ function drawBricks() {
                 ctx.rect(brickX, brickY, brickWidth, brickHeight);
 ctx.fillStyle = "white";
                 ctx.fill();
-             
-
-
-                
                 ctx.closePath();
             }
         }
@@ -138,21 +141,26 @@ function draw() {
 
     if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
         dx = -dx;
+        
     }
     if(y + dy < ballRadius) {
         dy = -dy;
+       
     }
     else if(y + dy > canvas.height-ballRadius) {
         if(x > paddleX && x < paddleX + paddleWidth) {
             dy = -dy;
+            audioBall.play();
         }
         else {
             lives--;
             if(!lives) {
-                // alert("GAME OVER");
-                // document.location.reload();
+                audioWin.play();
+                alert("ПОТРАЧЕНО");
+                document.location.reload();
             }
             else {
+                audioLoze.play();
                 x = canvas.width/2;
                 y = canvas.height-30;
                 dx = 1;
@@ -172,6 +180,35 @@ function draw() {
     x += dx;
     y += dy;
     requestAnimationFrame(draw);
-}
+};
 
-draw();
+
+function levels() {
+       var buttons = document.querySelectorAll("button");
+       var button;
+       function myFunc(e) {
+        if (e.target.id === "Novichek") {
+            modal.style.display = "none";
+            brickColumnCount = 1;
+            lives = 15;
+            draw();
+
+        }else if (e.target.id === "Master") {
+            modal.style.display = "none";
+            brickColumnCount = 2;
+            lives = 10;
+            draw();
+        }
+        else if (e.target.id === "Profi") {
+            modal.style.display = "none";
+            brickColumnCount = 4;
+            lives = 5;
+            draw();
+        }
+    };
+       for (var i = 0, len = buttons.length; i < len; i++) {
+        buttons[i].addEventListener("click", myFunc);
+        } 
+    };
+    
+levels();
