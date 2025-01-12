@@ -41,7 +41,10 @@ images.forEach((image,index) => {
   image.setAttribute("draggable", false);
 });
 
-
+let startX=0;
+let startY=0;
+let newX=0;
+let newY=0;
 // alert("ghbdtn");
 
 function mouseDown(eo) {
@@ -58,14 +61,14 @@ eo.target.style.zIndex=lastZIndex;
 
 console.log(lastZIndex);
 
-let shiftX;
-let shiftY;
 
-shiftX = eo.clientX - eo.target.getBoundingClientRect().left;
-shiftY = eo.clientY - eo.target.getBoundingClientRect().top;
-console.log(shiftX);
-console.log(shiftY);
-eo.target.setAttribute("draggable", true);
+startX = eo.clientX;
+startY = eo.clientY;
+// shiftX = eo.clientX - eo.target.style.left;
+// shiftY = eo.clientY - eo.target.style.top;
+console.log(startX);
+console.log(startY);
+// eo.target.setAttribute("draggable", true);
 
 //   // const image = eo.target;
 //   image.setAttribute("draggable", true);
@@ -74,14 +77,25 @@ eo.target.setAttribute("draggable", true);
 //   console.log("hello");
 
 
-
+}
 
 function mouseMove(eo) {
+  newX = startX - eo.clientX 
+    newY = startY - eo.clientY 
   
+    startX = eo.clientX
+    startY = eo.clientY
+
+    eo.target.style.top = (eo.target.offsetTop - newY) + 'px'
+    eo.target.style.left = (eo.target.offsetLeft - newX) + 'px'
+
+
+
+
   // debugger
   // eo=eo||window.event;
-  eo.target.style.left = eo.pageX - shiftX + 'px';
-  eo.target.style.top = eo.pageY - shiftY + 'px';
+  // eo.target.style.left = eo.pageX - shiftX + 'px';
+  // eo.target.style.top = eo.pageY - shiftY + 'px';
 
   console.log(eo.target.style.left);
   // debugger
@@ -97,12 +111,12 @@ function mouseMove(eo) {
 }
 
 
-}
+
 
 
 function mouseUp(eo) {
   // debugger
-  // // eo=eo||window.event;
+  eo=eo||window.event;
   // console.log("heo");
   document.removeEventListener("mousemove",mouseMove);
 //   event.preventDefault();
@@ -115,15 +129,15 @@ function mouseUp(eo) {
 //   image.style.top = eo.pageY - image.offsetHeight / 2 + 'px';
 //   }
 
-function mouseUp(eo) {
-  // debugger
-  eo.target.setAttribute("draggable", false);
-  // console.log("heo");
-  document.removeEventListener("mousemove",mouseMove);
-//   event.preventDefault();
-  // document.onmousemove = null;
-//   eo.target.onmouseup = null;
-}
+// function mouseUp(eo) {
+//   // debugger
+//   eo.target.setAttribute("draggable", false);
+//   // console.log("heo");
+//   document.removeEventListener("mousemove",mouseMove);
+// //   event.preventDefault();
+//   // document.onmousemove = null;
+// //   eo.target.onmouseup = null;
+// }
 
 }
 
