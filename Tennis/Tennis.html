@@ -84,8 +84,7 @@ let racketRight = { y : 0 , speedY : 0 }
         }
     
         function start() {
-            // плавное движение - от 25 кадр/сек
-            setInterval(tick,40);
+            setInterval(tick,35);
         }
     
         function tick() {
@@ -94,14 +93,21 @@ let racketRight = { y : 0 , speedY : 0 }
 
             ballH.posX+=ballH.speedX;
             // вылетел ли мяч правее стены?
-            if ( ballH.posX+ballH.width>areaH.width ) {
-                ballH.speedX=-ballH.speedX;
-                ballH.posX=areaH.width-ballH.width;
+            if ( (ballH.posX+ballH.width)>areaH.width ) {
+                ballH.speedY=0;
+    ballH.speedX=0;
+    alert("ты проиграл");
             }
+
+    //         // if ((ballH.posX+ballH.width)>395 && (ballH.posY+ballH.height/2)<(racketRight.y+80) && (ballH.posY+ballH.height/2)>(racketRight.y+40)) {
+    // ballH.speedY=-ballH.speedY;
             // вылетел ли мяч левее стены?
             if ( ballH.posX<0 ) {
-                ballH.speedX=-ballH.speedX;
-                ballH.posX=0;
+                // ballH.speedX=-ballH.speedX;
+                // ballH.posX=0;
+                 ballH.speedY=0;
+    ballH.speedX=0;
+    alert("ты проиграл");
             }
     
             ballH.posY+=ballH.speedY;
@@ -142,8 +148,10 @@ const racketRightElem=
 // 222222222222   попадание шарика в ракетнку
 
 // в левую
-if (ballH.posX<6 && (ballH.posY+ballH.height/2)>racketLeft.y && (ballH.posY+ballH.height/2)<(racketLeft.y+40)) {
-    ballH.speedY=-ballH.speedY;
+if (ballH.posX<5 && (ballH.posY+ballH.height/2)>racketLeft.y && (ballH.posY+ballH.height/2)<(racketLeft.y+40)) {
+    ballH.posX+=ballH.speedX+5;
+     ballH.speedY=-ballH.speedY;
+    
 }
 // в правую 
 console.log(ballH.posX);
@@ -151,11 +159,28 @@ console.log(ballH.posY);
 console.log((racketRight.y+80));
 console.log((racketRight.y+40));
 
-if ((ballH.posX+ballH.width)>395 && (ballH.posY+ballH.height/2)<(racketRight.y+80) && (ballH.posY+ballH.height/2)>(racketRight.y+40)) {
-    ballH.speedY=-ballH.speedY;
+if ((ballH.posX+ballH.width)>396 && (ballH.posY+ballH.height/2)<(racketRight.y+80) && (ballH.posY+ballH.height/2)>(racketRight.y+40)) 
+{
+    // ballH.posX=385;
+    // ballH.speedY=-ballH.speedY;
 
+
+    ballH.speedX=-ballH.speedX;
+    ballH.posX=areaH.width-ballH.width-5;
     // ballH.speedY=0;
     // ballH.speedX=0;
+
+// вылетел ли мяч правее стены?
+// if ( (ballH.posX+ballH.width)>areaH.width ) {
+//                 ballH.speedX=-ballH.speedX;
+//                 ballH.posX=areaH.width-ballH.width;
+//             }
+
+
+    // ballH.posX=areaH.width-ballH.width-"5px";
+    // ballH.speedY=0;
+    // ballH.speedX=0;
+    
 }
 
 // && ballH.posY<racketLeft.y && ballH.posY<(racketLeft.y+40)
