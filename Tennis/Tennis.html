@@ -25,7 +25,13 @@
     
     <script>
     // сделаем передвижение ракеток
+var state =0;
+var tagInput = document.getElementsByName("input");
 
+
+// начальное 0
+// мяч летает 1
+// остановка 2
 window.addEventListener("keydown",keyDown);
 window.addEventListener("keyup",keyUp);
 
@@ -84,7 +90,15 @@ let racketRight = { y : 0 , speedY : 0 }
         }
     
         function start() {
-            setInterval(tick,35);
+            if (state===2){
+                return;
+            } else if (state===1)
+            {tagInput.onclick = " ";
+            console.log(tagInput.onclick);
+            }else if (state===0){
+                state=3;
+                setInterval(tick,35);
+            }
         }
     
         function tick() {
@@ -96,7 +110,8 @@ let racketRight = { y : 0 , speedY : 0 }
             if ( (ballH.posX+ballH.width)>areaH.width ) {
                 ballH.speedY=0;
     ballH.speedX=0;
-    alert("ты проиграл");
+    state =2;
+    // alert("ты проиграл");
             }
 
     //         // if ((ballH.posX+ballH.width)>395 && (ballH.posY+ballH.height/2)<(racketRight.y+80) && (ballH.posY+ballH.height/2)>(racketRight.y+40)) {
@@ -107,7 +122,8 @@ let racketRight = { y : 0 , speedY : 0 }
                 // ballH.posX=0;
                  ballH.speedY=0;
     ballH.speedX=0;
-    alert("ты проиграл");
+    state = 2;
+    // alert("ты проиграл");
             }
     
             ballH.posY+=ballH.speedY;
@@ -120,7 +136,12 @@ let racketRight = { y : 0 , speedY : 0 }
 // двжение Левой ракетки
 const racketLeftElem= document.getElementById('Blue');
 
-racketLeft.y+= racketLeft.speedY
+// racketLeft.y+= racketLeft.speedY
+if(state===0){
+racketLeft.y+= racketLeft.speedY}
+else {
+    return;
+}
 
 if (racketLeft.y<0) {
     racketLeft.y=0
@@ -149,8 +170,9 @@ const racketRightElem=
 
 // в левую
 if (ballH.posX<5 && (ballH.posY+ballH.height/2)>racketLeft.y && (ballH.posY+ballH.height/2)<(racketLeft.y+40)) {
-    ballH.posX+=ballH.speedX+5;
-     ballH.speedY=-ballH.speedY;
+    // ballH.posX+=ballH.speedX+5;
+    ballH.posX=5;
+    ballH.speedX=-ballH.speedX;
     
 }
 // в правую 
@@ -192,7 +214,7 @@ if ((ballH.posX+ballH.width)>396 && (ballH.posY+ballH.height/2)<(racketRight.y+8
                 ballH.speedY=-ballH.speedY;
                 ballH.posY=0;
             }
-    
+   
             ballH.update();
         }
     
