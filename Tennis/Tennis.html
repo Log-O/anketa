@@ -94,16 +94,14 @@ let racketRight = { y : 0 , speedY : 0 }
                 return;
             } else if (state===1)
             {tagInput.onclick = " ";
-            console.log(tagInput.onclick);
             }else if (state===0){
-                state=3;
                 setInterval(tick,35);
             }
         }
     
         function tick() {
     
-
+state =1;
 
             ballH.posX+=ballH.speedX;
             // вылетел ли мяч правее стены?
@@ -137,7 +135,7 @@ let racketRight = { y : 0 , speedY : 0 }
 const racketLeftElem= document.getElementById('Blue');
 
 // racketLeft.y+= racketLeft.speedY
-if(state===0){
+if(state===1){
 racketLeft.y+= racketLeft.speedY}
 else {
     return;
