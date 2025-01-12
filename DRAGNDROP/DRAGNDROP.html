@@ -45,69 +45,29 @@ let startX=0;
 let startY=0;
 let newX=0;
 let newY=0;
-// alert("ghbdtn");
+
 
 function mouseDown(eo) {
-
-  // eo=eo||window.event;
-  
+ const dra = eo.target;
   console.log(eo.target.style.left);
-  // debugger
-  document.addEventListener("mousemove",mouseMove);
-  console.log('eo = '+eo);
-  // debugger
+  window.addEventListener("mousemove",mouseMove);
   lastZIndex++;
 eo.target.style.zIndex=lastZIndex;
-
-console.log(lastZIndex);
-
-
 startX = eo.clientX;
 startY = eo.clientY;
-// shiftX = eo.clientX - eo.target.style.left;
-// shiftY = eo.clientY - eo.target.style.top;
-console.log(startX);
-console.log(startY);
-// eo.target.setAttribute("draggable", true);
-
-//   // const image = eo.target;
-//   image.setAttribute("draggable", true);
-//   debugger
- 
-//   console.log("hello");
-
 
 }
 
 function mouseMove(eo) {
-  newX = startX - eo.clientX 
-    newY = startY - eo.clientY 
+
+  newX = startX - eo.clientX;
+    newY = startY - eo.clientY ;
   
     startX = eo.clientX
     startY = eo.clientY
 
-    eo.target.style.top = (eo.target.offsetTop - newY) + 'px'
-    eo.target.style.left = (eo.target.offsetLeft - newX) + 'px'
-
-
-
-
-  // debugger
-  // eo=eo||window.event;
-  // eo.target.style.left = eo.pageX - shiftX + 'px';
-  // eo.target.style.top = eo.pageY - shiftY + 'px';
-
-  console.log(eo.target.style.left);
-  // debugger
- 
-  
-  
-  // eo.target.left = eo.target.pageX - image.offsetWidth / 2 + 'px';
-  // // debugger
-  // eo.target.top = eo.target.pageY - image.offsetHeight / 2 + 'px';
-
-
-  
+    eo.target.style.top = (eo.target.offsetTop - newY) + 'px';
+    eo.target.style.left = (eo.target.offsetLeft - newX) + 'px';
 }
 
 
@@ -115,35 +75,12 @@ function mouseMove(eo) {
 
 
 function mouseUp(eo) {
-  // debugger
-  eo=eo||window.event;
-  // console.log("heo");
-  document.removeEventListener("mousemove",mouseMove);
-//   event.preventDefault();
-  // document.onmousemove = null;
-//   eo.target.onmouseup = null;
-}
-
-// function moveAt(eo) {
-//   image.style.left = eo.pageX - image.offsetWidth / 2 + 'px';
-//   image.style.top = eo.pageY - image.offsetHeight / 2 + 'px';
-//   }
-
-// function mouseUp(eo) {
-//   // debugger
-//   eo.target.setAttribute("draggable", false);
-//   // console.log("heo");
-//   document.removeEventListener("mousemove",mouseMove);
-// //   event.preventDefault();
-//   // document.onmousemove = null;
-// //   eo.target.onmouseup = null;
-// }
-
+  window.removeEventListener("mousemove",mouseMove);
 }
 
 
 
-
+}
 
 
 
@@ -151,29 +88,3 @@ function mouseUp(eo) {
 
   </body>
 </html>
-
-
-<!-- надо програмно найти их координаты и потом присвоить координаты -->
-<!-- network ставить disable network cachev -->
- <!-- не использовать события мыши, связанные с drag&drop, такие как dragstart и т.д -->
-
-
-<!-- Реализовать на JavaScript возможность перетаскивания мышью по веб-странице этих
-картинок. Обрабатывать как минимум события mousedown, mousemove, mouseup;
-поддержку браузером drag&drop не использовать.
-Использовать именно абсолютное позиционирование.
-Изображения должны «таскаться» мышью за любую точку (т.е. и при «взятии» и при
-«отпускании» изображение смещаться не должно, оно должно смещаться только при
-смещении мыши при нажатой левой кнопке, ровно настолько, насколько смещена мышь).
-Код не должен зависеть от количества картинок (т.е. код должен сам найти все
-картинки, которые есть на веб-странице).
-Код никак не должен зависеть от того, как именно свёрстаны картинки — какие
-атрибуты и стилевые свойства им заданы.
-Когда начинается перетаскивание какой-либо картинки, остальные картинки не должны
-сдвигаться.
-Картинка, перетаскивание которой началось, должна сразу оказаться выше (ближе к
-глазам), чем остальные (z-index). После окончания перетаскивания картинки z-index
-ни одной из картинок меняться не должен, т.е. взаимный z-index картинок должен
-остаться тем же, каким был во время перетаскивания.
-На время перетаскивания менять форму курсора на какую-нибудь подходящую.
-Вёрстку страницы никак не менять; вся работа — только внутри тега <scr -->
