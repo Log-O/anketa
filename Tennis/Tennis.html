@@ -21,14 +21,25 @@
        
        <div style='width: 5px; height: 40px;
                    background-color: red; position: relative;   right: -395px;' id='Red'></div>
+<div id="left"></div>
+<div id="right"></div>
+
+
     </div>
     
     <script>
-    // сделаем передвижение ракеток
+    
 var state =0;
 var tagInput = document.getElementsByName("input");
+var scoreRight = 0;
+var scoreLeft = 0;
+var leftScore = document.getElementById("left");
+var rightScore = document.getElementById("right");
+leftScore.innerHTML = 'Счет левого игрока  ' + scoreLeft;
+rightScore.innerHTML = 'Счет правого игрока  ' + scoreRight;
 
 
+// сделаем передвижение ракеток
 // начальное 0
 // мяч летает 1
 // остановка 2
