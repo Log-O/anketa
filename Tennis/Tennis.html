@@ -21,28 +21,30 @@
        
        <div style='width: 5px; height: 40px;
                    background-color: red; position: relative;   right: -395px;' id='Red'></div>
-<div id="left"></div>
-<div id="right"></div>
+
 
 
     </div>
-    
+    <div id="left">Забитых мячей правому игроку  0</div>
+<div id="right">Забитых мячей левому игроку  0</div>
     <script>
     
 var state =0;
-var tagInput = document.getElementsByName("input");
-var scoreRight = 0;
-var scoreLeft = 0;
+var tagInput = document.getElementsByTagName("input");
+var scoreRight=0;
+var scoreLeft=0;
+
 var leftScore = document.getElementById("left");
 var rightScore = document.getElementById("right");
-leftScore.innerHTML = 'Счет левого игрока  ' + scoreLeft;
-rightScore.innerHTML = 'Счет правого игрока  ' + scoreRight;
 
+// leftScore.innerHTML = 'Забитых мячей левым игроком  ' + scoreLeft;
+
+// rightScore.innerHTML = 'Забитых мячей правым игроком  ' + scoreRight;
+
+var timer;
 
 // сделаем передвижение ракеток
-// начальное 0
-// мяч летает 1
-// остановка 2
+
 window.addEventListener("keydown",keyDown);
 window.addEventListener("keyup",keyUp);
 
@@ -76,8 +78,8 @@ function keyUp(eo) {
 
     // 1111111Дальше движение шарика
         let ballH={
-            posX : 30,
-            posY : 30,
+            posX : 200,
+            posY : 150,
             speedX : 2,
             speedY : 1,
             width : 10,
@@ -99,40 +101,66 @@ let racketRight = { y : 0 , speedY : 0 }
             width : 400,
             height : 300
         }
-    
+    // начальное 0
+// мяч летает 1
+function random(min, max) {
+  let rand = min + Math.random() * (max + 1 - min);
+  return Math.floor(rand);
+}
+// остановка 2
         function start() {
+            // alert(ballH.speedX);
             if (state===2){
-                return;
+                
+return
+                // ballH.posY=30;
+                // ballH.posX=30;
+                // state=0;
+                // alert(state);
+                // return state;
+
             } else if (state===1)
-            {tagInput.onclick = " ";
+            {return
             }else if (state===0){
-                setInterval(tick,35);
+                
+                timer=setInterval(tick,35);
+                state =1;
+                // tagInput.onclick = " ";
+                // alert(tagInput.value);
             }
         }
     
         function tick() {
-    
-state =1;
+            leftScore.innerHTML = 'Забитых мячей правому игроку  ' + scoreLeft;
+
+rightScore.innerHTML = 'Забитых мячей левому игроку  ' + scoreRight;
+// state =1;
 
             ballH.posX+=ballH.speedX;
             // вылетел ли мяч правее стены?
             if ( (ballH.posX+ballH.width)>areaH.width ) {
-                ballH.speedY=0;
-    ballH.speedX=0;
-    state =2;
-    // alert("ты проиграл");
+               
+               ballH.speedY=0;
+               ballH.speedX=0;
+               scoreLeft++; 
+               clearInterval(timer);
+                state=0;
+                ballH.posY=random(200,150);
+                ballH.posX=random(200,150);
+                ballH.speedX=random(-1,-3);
+               ballH.speedY=random(1,3);
             }
-
-    //         // if ((ballH.posX+ballH.width)>395 && (ballH.posY+ballH.height/2)<(racketRight.y+80) && (ballH.posY+ballH.height/2)>(racketRight.y+40)) {
-    // ballH.speedY=-ballH.speedY;
             // вылетел ли мяч левее стены?
             if ( ballH.posX<0 ) {
-                // ballH.speedX=-ballH.speedX;
-                // ballH.posX=0;
                  ballH.speedY=0;
-    ballH.speedX=0;
-    state = 2;
-    // alert("ты проиграл");
+                 ballH.speedX=0;
+                 scoreRight++;
+                 clearInterval(timer);
+                state=0;
+                ballH.posY=random(200,150);
+                ballH.posX=random(200,150);
+                ballH.speedX=random(1,3);
+               ballH.speedY=random(-1,-4);
             }
     
             ballH.posY+=ballH.speedY;
@@ -179,7 +207,7 @@ const racketRightElem=
 
 // в левую
 if (ballH.posX<5 && (ballH.posY+ballH.height/2)>racketLeft.y && (ballH.posY+ballH.height/2)<(racketLeft.y+40)) {
-    // ballH.posX+=ballH.speedX+5;
+    
     ballH.posX=5;
     ballH.speedX=-ballH.speedX;
     
@@ -187,35 +215,17 @@ if (ballH.posX<5 && (ballH.posY+ballH.height/2)>racketLeft.y && (ballH.posY+ball
 // в правую 
 console.log(ballH.posX);
 console.log(ballH.posY);
-console.log((racketRight.y+80));
-console.log((racketRight.y+40));
 
 if ((ballH.posX+ballH.width)>396 && (ballH.posY+ballH.height/2)<(racketRight.y+80) && (ballH.posY+ballH.height/2)>(racketRight.y+40)) 
 {
-    // ballH.posX=385;
-    // ballH.speedY=-ballH.speedY;
+ 
 
 
     ballH.speedX=-ballH.speedX;
     ballH.posX=areaH.width-ballH.width-5;
-    // ballH.speedY=0;
-    // ballH.speedX=0;
-
-// вылетел ли мяч правее стены?
-// if ( (ballH.posX+ballH.width)>areaH.width ) {
-//                 ballH.speedX=-ballH.speedX;
-//                 ballH.posX=areaH.width-ballH.width;
-//             }
-
-
-    // ballH.posX=areaH.width-ballH.width-"5px";
-    // ballH.speedY=0;
-    // ballH.speedX=0;
+    
     
 }
-
-// && ballH.posY<racketLeft.y && ballH.posY<(racketLeft.y+40)
-
 
 
             // вылетел ли мяч выше потолка?
@@ -228,7 +238,8 @@ if ((ballH.posX+ballH.width)>396 && (ballH.posY+ballH.height/2)<(racketRight.y+8
         }
     
         ballH.update();
-    
+       
+
     </script>
 
 
